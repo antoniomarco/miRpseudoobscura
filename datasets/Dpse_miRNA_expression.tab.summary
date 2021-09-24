@@ -1,0 +1,15 @@
+Status	dpse_female_1_t.sam	dpse_female_2_t.sam	dpse_male_1_t.sam	dpse_male_2_t.sam	SRR902010_t.sam	SRR902011_t.sam	SRR5461097_t.sam	SRR5461098_t.sam	SRR5461099_t.sam
+Assigned	7592	49030	6303	75217	2213483	2230771	3288300	162497	20234234
+Unassigned_Unmapped	33794	23087	24540	28401	945156	1473625	10780925	831424	51300727
+Unassigned_Read_Type	0	0	0	0	0	0	0	0	0
+Unassigned_Singleton	0	0	0	0	0	0	0	0	0
+Unassigned_MappingQuality	0	0	0	0	0	0	0	0	0
+Unassigned_Chimera	0	0	0	0	0	0	0	0	0
+Unassigned_FragmentLength	0	0	0	0	0	0	0	0	0
+Unassigned_Duplicate	0	0	0	0	0	0	0	0	0
+Unassigned_MultiMapping	77783	617635	46300	496104	28532400	15233416	15339843	1023490	178505251
+Unassigned_Secondary	0	0	0	0	0	0	0	0	0
+Unassigned_NonSplit	0	0	0	0	0	0	0	0	0
+Unassigned_NoFeatures	4408	34978	2076	29138	1607541	1335293	743427	154768	10674295
+Unassigned_Overlapping_Length	0	0	0	0	0	0	0	0	0
+Unassigned_Ambiguity	0	10	1	13	45	2249	3394	87	33406
