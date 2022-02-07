@@ -5,11 +5,20 @@
 #   Index for Drosophila melanogaster dm6 in $HISAT2_INDEXES required
 # featureCounts (2.0.2)
 # cutadapt (1.18)
+# bedtools 2.27.1
+# BLAST 2.9.0
+# MAFFT  v7.453
+# Bedtools v2.30.0
+# 
 #
-
 # R (3.6.0)
 # R libraries:
-#  DESeq2 (1.24.0)
+#  DESeq2_1.24.0
+#  ips_0.0.11
+#  rBLAST_0.99.2
+#  Biostrings_2.62.0
+#  igraph_1.2.11
+#  bedtoolsr_2.30.0-1
 
 # # Output folders
 # # Commented out by default
@@ -48,8 +57,14 @@ Rscript scripts/DGE_melanogaster.R
 # Orthologs Dmel/Dpse l2FC
 Rscript scripts/Compare_Dpse_Dmel_orthologs.R
 
+# Homology clusters and similarity searches
+Rscript scripts/Homology_groups_and_similarity.R
+
 # New versus conserved microRNAs
 Rscript scripts/Novel_versus_conserved.R
+
+# Re-analysis in clusters
+Rscript scripts/Clusters_of_microRNAs.R
 
 # Comparison with other datasets
 Rscript scripts/Compare_ours_and_Lai_dataset.R

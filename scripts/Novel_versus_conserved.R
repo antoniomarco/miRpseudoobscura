@@ -38,7 +38,7 @@ dev.off()
 # ONLY TESTIS AND OVARIES
 #
 # Remove microRNAs not expressed in either testis or ovary
-dps_miR_pre_gonads <- dps_miR_pre[(dps_miR_pre$testis_t > 0) & (dps_miR_pre$ovary_t > 0),]
+dps_miR_pre_gonads <- dps_miR_pre[(dps_miR_pre$testis_t > 0) | (dps_miR_pre$ovary_t > 0),]
 rpm_testis <- dps_miR_pre_gonads$testis_t/(sum(dps_miR_pre_gonads$testis_t)/1e6)
 rpm_ovary <- dps_miR_pre_gonads$ovary_t/(sum(dps_miR_pre_gonads$ovary_t)/1e6)
 dps_miR_pre_gonads$testis_ovary_ratio <- log2((rpm_testis+1)/(rpm_ovary+1))
@@ -49,7 +49,7 @@ dpse_nospecific_X <- rownames(dps_miR_pre_gonads[(dps_miR_pre_gonads$DpsSpecific
 dpse_nospecific_A <- rownames(dps_miR_pre_gonads[(dps_miR_pre_gonads$DpsSpecific == "no") & !(dps_miR_pre_gonads$Muller %in% c("XL_A","XR_D")),])
 # Boxplot
 pdf("plots/novel_versus_conserved_SB_gonads.pdf")
-boxplot(dps_miR_pre_gonads[dpse_nospecific_A,]$testis_ovary_ratio, dps_miR_pre_gonads[dpse_nospecific_X,]$testis_ovary_ratio, dps_miR_pre_gonads[dpse_specific_A,]$testis_ovary_ratio, dps_miR_pre_gonads[dpse_specific_X,]$testis_ovary_ratio, axes = FALSE) 
+boxplot(dps_miR_pre_gonads[dpse_nospecific_A,]$testis_ovary_ratio, dps_miR_pre_gonads[dpse_nospecific_X,]$testis_ovary_ratio, dps_miR_pre_gonads[dpse_specific_A,]$testis_ovary_ratio, dps_miR_pre_gonads[dpse_specific_X,]$testis_ovary_ratio, axes = FALSE, col = 'white') 
 axis(1, at = 1:4, label = c("Conserved (A)", "Conserved (X)", "Novel (A)", "Novel (X)"))
 abline(h=0, col = "darkgrey")
 axis(2, at = c(-10, -5, 0, 5, 10), label = c(-10, -5, 0, 5, 10), las = 2)
@@ -57,7 +57,7 @@ points(c(rep(1,nrow(dps_miR_pre_gonads[dpse_nospecific_A,])), rep(2,nrow(dps_miR
 dev.off()
 # Compare novel X versus all other miR
 wilcox.test(dps_miR_pre_gonads[c(dpse_specific_A, dpse_nospecific_X, dpse_nospecific_A),]$testis_ovary_ratio, dps_miR_pre_gonads[dpse_specific_X,]$testis_ovary_ratio)
-# p-value = 0.0001757
+# p-value = 3.781e-05
 
 
 

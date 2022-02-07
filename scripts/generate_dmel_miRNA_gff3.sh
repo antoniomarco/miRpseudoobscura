@@ -46,6 +46,9 @@ Rscript scripts/remove_deprecated_miRs_dme.R
 echo -e "##gff-version 3\n##date 2021-6-6\n# Chromosomal coordinates of Drosophila melanogaster microRNAs\n# genome-build:  dm6\n#" > dme_dm6_head.gff3
 cat dme_dm6_head.gff3 dme_dm6_filtered.gff3 | sort -k 9 > datasets/dme_dm6.gff3
 
+# Fasta file
+cat dme_hairpin.fa dme_newLai_pre.fa | grep -v -e 'dme-mir-287' | grep -v -e 'dme-mir-288' | grep -v -e 'dme-mir-280' | grep -v -e 'dme-mir-289' | grep -A 1 -e'>' | grep -v -e '--' > datasets/dme_dm6.fas
+
 # Remove temp files
 rm -r dme_hairpin.fa dme_newLai_pre.fa dme_newLai_pre_even.fa *.gff3 *.sam *12flies* hairpin.fa.gz
 

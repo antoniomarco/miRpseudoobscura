@@ -48,10 +48,10 @@ resPreB <-results(ddsPreB, contrast=c("sex","male","female"))
 
 # Volcano plot
 pdf("plots/dpse_DGE_volcano.pdf")
-hits_over_PreB <-resPreB[which((resPreB$padj<0.10) & (resPreB$log2FoldChange >= log(2))),]
-hits_under_PreB <-resPreB[which((resPreB$padj<0.10) & (resPreB$log2FoldChange <= -log(2))),]
+hits_over_PreB <-resPreB[which((resPreB$padj<0.10) & (resPreB$log2FoldChange >= log(1.25))),]
+hits_under_PreB <-resPreB[which((resPreB$padj<0.10) & (resPreB$log2FoldChange <= log(0.8))),]
 plot(resPreB$log2FoldChange, -log10(resPreB$padj), xlab = "log2 Fold Change", ylab = "-log10(q)", pch = 16, col = "darkgrey", xlim = c(-max(abs(resPreB$log2FoldChange),na.rm = TRUE),max(abs(resPreB$log2FoldChange),na.rm = TRUE)))
-abline(h=-log10(0.10), v=c(-log(2),log(2)), lty = 'dashed')
+abline(h=-log10(0.10), v=c(log(0.8),log(1.25)), lty = 'dashed')
 points(hits_over_PreB$log2FoldChange, -log10(hits_over_PreB$padj), pch = 16, col = "darkred")
 points(hits_under_PreB$log2FoldChange, -log10(hits_under_PreB$padj), pch = 16, col = "darkblue")
 dev.off()
@@ -61,7 +61,7 @@ pdf("plots/dpse_DGE_smear.pdf")
 plot(log10(resPreB$baseMean), resPreB$log2FoldChange, pch = 19, col = 'white', xlab = "Mean Expression (DESeq2)", ylab = "log2 fold-change", axes = FALSE)
 abline(h = 0)
 points(log10(resPreB$baseMean), resPreB$log2FoldChange, pch = 19, col = 'darkgrey')
-values_q_10 <- which(resPreB$padj < 0.1)
+values_q_10 <- which((resPreB$padj<0.10) & (abs(resPreB$log2FoldChange) >= log(1.25)))
 points(log10(resPreB[values_q_10,]$baseMean), resPreB[values_q_10,]$log2FoldChange, pch = 19, col = 'black')
 axis(1, at=-1:3, tcl= 0.2, labels = c("0.1", "1", "10", "100", "1000"))
 axis(2, at = c(-6,-4,-2,0,2,4,6), labels = c(-6,-4,-2,0,2,4,6), las = 2)

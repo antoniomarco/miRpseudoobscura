@@ -46,8 +46,12 @@ Rscript scripts/remove_deprecated_miRs.R
 echo -e "##gff-version 3\n##date 2021-6-6\n# Chromosomal coordinates of Drosophila pseudoobscura microRNAs\n# genome-build-accession:  GCF_009870125.1_UCI_Dpse_MV25_genomic\n#" > dps_104_head.gff3
 cat dps_104_head.gff3 dps_104_filtered.gff3 | sort -k 9 > datasets/dps_104.gff3
 
+# Generate fasta file with precursors
+cat datasets/dps_104.gff3 | grep primary_transcript | awk '{print $1 "\t" $4 "\t" $5 "\t" $9 "\t.\t" $7}' | sed 's/Name=//g' > dps_104.bed
+bedtools getfasta -name -fi GCF_009870125.1_UCI_Dpse_MV25_genomic.fna -bed dps_104.bed > datasets/dps_104.fas
+
 # Remove temp files
-rm -r GCF_009870125.1_UCI_Dpse_MV25_genomic.fna dps_hairpin.fa dps_newLai_pre.fa dps_newLai_pre_even.fa *.gff3 *.sam *12flies* hairpin.fa.gz GCF_009870125.1_UCI_Dpse_MV25_genomic.fna.gz
+rm -r GCF_009870125.1_UCI_Dpse_MV25_genomic.fna dps_hairpin.fa dps_newLai_pre.fa dps_newLai_pre_even.fa *.gff3 *.sam *12flies* hairpin.fa.gz GCF_009870125.1_UCI_Dpse_MV25_genomic.fna.gz dps_104.bed
 
 # EXIT
 exit 0

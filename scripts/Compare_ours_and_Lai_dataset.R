@@ -23,8 +23,6 @@ dev.off()
 
 summary(lm(resPreBL$log2FoldChange ~ resPreB$log2FoldChange))
 
-
-
 # Exit
 q()
 
