@@ -4,7 +4,7 @@
 # DROSOPHILA PSEUDOOBSCURA #
 ############################
 
-# PAPERS ORIGINAL DATA
+# PAPER'S ORIGINAL DATA
 # Download expression data from EBI ENA
 curl -O "ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR151/073/SRR15115773/SRR15115773.fastq.gz" # male 1
 curl -O "ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR151/074/SRR15115774/SRR15115774.fastq.gz" # male 2

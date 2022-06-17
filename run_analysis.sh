@@ -19,6 +19,7 @@
 #  Biostrings_2.62.0
 #  igraph_1.2.11
 #  bedtoolsr_2.30.0-1
+#  limma 4.2.0
 
 # # Output folders
 # # Commented out by default
@@ -51,6 +52,9 @@
 # Differential Gene Expression Analysis: Drosophila pseudoobscura
 Rscript scripts/DGE_pseudoobscura.R
 
+# Comparison with other datasets
+Rscript scripts/Compare_ours_and_Lai_dataset.R
+
 # Differential Gene Expression Analysis: Drosophila melanogaster
 Rscript scripts/DGE_melanogaster.R
 
@@ -66,8 +70,9 @@ Rscript scripts/Novel_versus_conserved.R
 # Re-analysis in clusters
 Rscript scripts/Clusters_of_microRNAs.R
 
-# Comparison with other datasets
-Rscript scripts/Compare_ours_and_Lai_dataset.R
+
+# Remove reference genome sequence and BLAST databases
+rm GCF_009870125.1_UCI_Dpse_MV25_genomic.fna* dmel_* dps_*
 
 
 
